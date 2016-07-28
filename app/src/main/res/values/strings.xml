@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name" translatable="false">LookUp</string>
+    <string name="input_prompt">Search</string>
+    <string name="no_network">No network</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LookUp</string>
+    <string name="input_prompt">查找</string>
+    <string name="no_network">无可用网络</string>
+</resources>
