@@ -229,7 +229,8 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="app_name" translatable="false">LookUp</string>
     <string name="input_prompt">Search</string>
-    <string name="no_network">No network</string>
+    <string name="no_network">No network.</string>
+    <string name="retrieve_failed">Unable to retrieve.</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

@@ -20,14 +20,16 @@
         android:hint="@string/input_prompt"
         android:imeOptions="actionSearch"/>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ImageButton
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/scrollView"
-        android:onClick="searchHandler" />
+        android:onClick="searchHandler"
+        android:src="@drawable/search_button"
+        android:contentDescription="@string/input_prompt" />
 
     <ScrollView
         android:layout_width="match_parent"

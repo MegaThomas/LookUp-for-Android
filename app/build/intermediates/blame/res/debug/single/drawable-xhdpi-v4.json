@@ -84,6 +84,10 @@
         "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
+        "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\search_button.png",
+        "source": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\drawable-xhdpi\\search_button.png"
+    },
+    {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png",
         "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png"
     },

@@ -58,6 +58,25 @@
                         "endOffset": 187
                     }
                 }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 188,
+                    "endColumn": 48,
+                    "endOffset": 232
+                },
+                "from": {
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 193,
+                        "endColumn": 48,
+                        "endOffset": 237
+                    }
+                }
             }
         ]
     }
