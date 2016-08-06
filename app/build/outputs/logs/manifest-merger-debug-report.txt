@@ -39,7 +39,7 @@ MERGED from [com.android.support:support-v4:24.0.0] E:\MyProgram\Android\LookUp\
 	android:icon
 		ADDED from E:\MyProgram\Android\LookUp\app\src\main\AndroidManifest.xml:8:9-43
 	android:theme
-		ADDED from E:\MyProgram\Android\LookUp\app\src\main\AndroidManifest.xml:11:9-40
+		ADDED from E:\MyProgram\Android\LookUp\app\src\main\AndroidManifest.xml:11:9-38
 activity#xyz.basswarlock.lookup.MainActivity
 ADDED from E:\MyProgram\Android\LookUp\app\src\main\AndroidManifest.xml:12:9-18:20
 	android:name
