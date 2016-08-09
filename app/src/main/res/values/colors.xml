@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="holo_green_light">#8bc34a</color>
     <color name="LookUp_green">#badf8f</color>
+    <color name="textColor">#333</color>
 </resources>

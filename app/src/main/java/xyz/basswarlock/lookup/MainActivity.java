@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -13,9 +14,11 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.AutoCompleteTextView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import java.io.IOException;
 
@@ -24,30 +27,44 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 public class MainActivity extends AppCompatActivity {
-    AutoCompleteTextView autoCompleteTextView;
+    ClearableAutoCompleteTextView autoComplete;
     TextView textView;
+    ScrollView scrollView;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoComplete);
-        autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this,
+        autoComplete =
+                (ClearableAutoCompleteTextView) findViewById(R.id.autoComplete);
+        autoComplete.setAdapter(new AutoCompleteAdapter(this,
                 android.R.layout.simple_dropdown_item_1line));
-        autoCompleteTextView.setThreshold(1);
-        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        autoComplete.setThreshold(1);
+        autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 searchHandler(view);
             }
         });
+        autoComplete.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView view, int actionId, KeyEvent k) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    searchHandler(view);
+                    handled = true;
+                }
+                return handled;
+            }
+        });
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
         textView = (TextView) findViewById(R.id.textView);
         textView.setMovementMethod(new ScrollingMovementMethod());
+        textView.setTextColor(ContextCompat.getColor(this, R.color.textColor));
     }
 
     public void searchHandler(View view) {
-        String message = autoCompleteTextView.getText().toString().trim();
+        String message = autoComplete.getText().toString().trim();
         String url = "https://vocabulary.com/dictionary/definition.ajax?search="
                 + message + "&lang=en";
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -86,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
             }
             SpannableString text = new SpannableString(spanned);
             textView.setText(text, TextView.BufferType.SPANNABLE);
+            // scroll to top
+            scrollView.fullScroll(ScrollView.FOCUS_UP);
         }
     }
 

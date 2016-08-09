@@ -1,7 +1,6 @@
 package xyz.basswarlock.lookup;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;

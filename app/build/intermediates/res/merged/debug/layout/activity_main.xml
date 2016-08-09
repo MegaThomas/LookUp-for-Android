@@ -10,14 +10,16 @@
     android:orientation="vertical"
     tools:context="xyz.basswarlock.lookup.MainActivity">
 
-    <AutoCompleteTextView
+    <xyz.basswarlock.lookup.ClearableAutoCompleteTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:theme="@style/LookUp"
         android:id="@+id/autoComplete"
         android:layout_toStartOf="@+id/button"
         android:hint="@string/input_prompt"
-        android:imeOptions="actionSearch"/>
+        android:singleLine="true"
+        android:imeOptions="actionSearch|flagForceAscii"/>
 
     <ImageButton
         style="?android:attr/borderlessButtonStyle"
@@ -40,11 +42,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Héllo!"
+            android:text=""
+            android:focusable="true"
             android:id="@+id/textView" />
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:scrollbars="vertical"-->
     </ScrollView>
 
 
