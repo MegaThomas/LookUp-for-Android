@@ -1643,9 +1643,30 @@
                     "startLine": 221,
                     "startColumn": 4,
                     "startOffset": 16617,
-                    "endLine": 230,
+                    "endLine": 228,
                     "endColumn": 12,
-                    "endOffset": 17125
+                    "endOffset": 17136
+                },
+                "from": {
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-v21\\styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 583
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 229,
+                    "startColumn": 4,
+                    "startOffset": 17141,
+                    "endLine": 238,
+                    "endColumn": 12,
+                    "endOffset": 17649
                 },
                 "from": {
                     "file": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\values-v21\\values-v21.xml",
@@ -1661,12 +1682,12 @@
             },
             {
                 "to": {
-                    "startLine": 231,
+                    "startLine": 239,
                     "startColumn": 4,
-                    "startOffset": 17130,
-                    "endLine": 240,
+                    "startOffset": 17654,
+                    "endLine": 248,
                     "endColumn": 12,
-                    "endOffset": 17650
+                    "endOffset": 18174
                 },
                 "from": {
                     "file": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\values-v21\\values-v21.xml",
@@ -1682,12 +1703,12 @@
             },
             {
                 "to": {
-                    "startLine": 241,
+                    "startLine": 249,
                     "startColumn": 4,
-                    "startOffset": 17655,
-                    "endLine": 250,
+                    "startOffset": 18179,
+                    "endLine": 258,
                     "endColumn": 12,
-                    "endOffset": 18330
+                    "endOffset": 18854
                 },
                 "from": {
                     "file": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\values-v21\\values-v21.xml",
@@ -1703,11 +1724,11 @@
             },
             {
                 "to": {
-                    "startLine": 251,
+                    "startLine": 259,
                     "startColumn": 4,
-                    "startOffset": 18335,
+                    "startOffset": 18859,
                     "endColumn": 56,
-                    "endOffset": 18387
+                    "endOffset": 18911
                 },
                 "from": {
                     "file": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\values-v21\\values-v21.xml",
@@ -1722,11 +1743,11 @@
             },
             {
                 "to": {
-                    "startLine": 252,
+                    "startLine": 260,
                     "startColumn": 4,
-                    "startOffset": 18392,
+                    "startOffset": 18916,
                     "endColumn": 57,
-                    "endOffset": 18445
+                    "endOffset": 18969
                 },
                 "from": {
                     "file": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\values-v21\\values-v21.xml",
@@ -1736,6 +1757,27 @@
                         "startOffset": 18392,
                         "endColumn": 57,
                         "endOffset": 18445
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 261,
+                    "startColumn": 4,
+                    "startOffset": 18974,
+                    "endLine": 263,
+                    "endColumn": 12,
+                    "endOffset": 19127
+                },
+                "from": {
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-v21\\styles.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 589,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 744
                     }
                 }
             }

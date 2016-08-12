@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">LookUp</string>
-    <string name="input_prompt">Search</string>
+    <string name="search">Search</string>
     <string name="no_network">No network.</string>
     <string name="retrieve_failed">Unable to retrieve.</string>
+    <string name="action_settings">Settings</string>
 </resources>

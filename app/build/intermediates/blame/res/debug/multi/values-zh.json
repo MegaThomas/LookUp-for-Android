@@ -7,8 +7,27 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
+                    "endColumn": 46,
+                    "endOffset": 97
+                },
+                "from": {
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 237,
+                        "endColumn": 46,
+                        "endOffset": 279
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 102,
                     "endColumn": 43,
-                    "endOffset": 94
+                    "endOffset": 141
                 },
                 "from": {
                     "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
@@ -23,11 +42,11 @@
             },
             {
                 "to": {
-                    "startLine": 3,
+                    "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 99,
-                    "endColumn": 43,
-                    "endOffset": 138
+                    "startOffset": 146,
+                    "endColumn": 44,
+                    "endOffset": 186
                 },
                 "from": {
                     "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
@@ -35,27 +54,8 @@
                         "startLine": 3,
                         "startColumn": 4,
                         "startOffset": 102,
-                        "endColumn": 43,
-                        "endOffset": 141
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 143,
-                    "endColumn": 44,
-                    "endOffset": 183
-                },
-                "from": {
-                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 147,
                         "endColumn": 44,
-                        "endOffset": 187
+                        "endOffset": 142
                     }
                 }
             },
@@ -63,18 +63,37 @@
                 "to": {
                     "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 188,
+                    "startOffset": 191,
                     "endColumn": 48,
-                    "endOffset": 232
+                    "endOffset": 235
+                },
+                "from": {
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 148,
+                        "endColumn": 48,
+                        "endOffset": 192
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 240,
+                    "endColumn": 37,
+                    "endOffset": 273
                 },
                 "from": {
                     "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 193,
-                        "endColumn": 48,
-                        "endOffset": 237
+                        "startOffset": 198,
+                        "endColumn": 37,
+                        "endOffset": 231
                     }
                 }
             }

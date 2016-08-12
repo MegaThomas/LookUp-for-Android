@@ -28,8 +28,8 @@
         "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
-        "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\clear_button.png",
-        "source": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\drawable-xxhdpi\\clear_button.png"
+        "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_search_black_24dp.png",
+        "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_search_black_24dp.png"
     },
     {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
@@ -86,10 +86,6 @@
     {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png",
         "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable-xxhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
-    },
-    {
-        "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\search_button.png",
-        "source": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\drawable-xxhdpi\\search_button.png"
     },
     {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",

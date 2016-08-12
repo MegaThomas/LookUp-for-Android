@@ -1,9 +1,5 @@
 [
     {
-        "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\clear_button.png",
-        "source": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\drawable-xhdpi\\clear_button.png"
-    },
-    {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
         "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable-xhdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
@@ -14,6 +10,10 @@
     {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
         "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_search_black_24dp.png",
+        "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_search_black_24dp.png"
     },
     {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
@@ -86,10 +86,6 @@
     {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png",
         "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
-    },
-    {
-        "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\search_button.png",
-        "source": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\drawable-xhdpi\\search_button.png"
     },
     {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_list_longpressed_holo.9.png",

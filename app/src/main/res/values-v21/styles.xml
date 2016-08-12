@@ -5,6 +5,8 @@
         <item name="colorPrimaryDark">@android:color/holo_green_dark</item>
         <item name="colorAccent">@color/LookUp_green</item>
         <item name="android:textColorPrimary">@android:color/holo_green_dark</item>
+        <item name="android:statusBarColor">@color/holo_green_light</item>
+        <item name="android:navigationBarColor">@color/holo_green_light</item>
     </style>
     <style name="ToolbarColoredBackArrow" parent="LookUp">
         <item name="android:textColorSecondary">@android:color/holo_green_dark</item>

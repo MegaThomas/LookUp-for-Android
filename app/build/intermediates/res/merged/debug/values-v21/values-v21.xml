@@ -219,6 +219,14 @@
     <style name="Base.Widget.AppCompat.TextView.SpinnerItem" parent="android:Widget.Material.TextView.SpinnerItem"/>
     <style name="Base.Widget.AppCompat.Toolbar.Button.Navigation" parent="android:Widget.Material.Toolbar.Button.Navigation">
     </style>
+    <style name="LookUp" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/holo_green_light</item>
+        <item name="colorPrimaryDark">@android:color/holo_green_dark</item>
+        <item name="colorAccent">@color/LookUp_green</item>
+        <item name="android:textColorPrimary">@android:color/holo_green_dark</item>
+        <item name="android:statusBarColor">@color/holo_green_light</item>
+        <item name="android:navigationBarColor">@color/holo_green_light</item>
+    </style>
     <style name="Platform.AppCompat" parent="android:Theme.Material">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
@@ -251,4 +259,7 @@
     </style>
     <style name="Platform.ThemeOverlay.AppCompat.Dark"/>
     <style name="Platform.ThemeOverlay.AppCompat.Light"/>
+    <style name="ToolbarColoredBackArrow" parent="LookUp">
+        <item name="android:textColorSecondary">@android:color/holo_green_dark</item>
+    </style>
 </resources>
