@@ -1,15 +1,15 @@
 [
     {
-        "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
-        "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\color-v23\\abc_tint_spinner.xml"
-    },
-    {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
         "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\color-v23\\abc_tint_switch_thumb.xml"
     },
     {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
         "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\color-v23\\abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
+        "source": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\color-v23\\abc_tint_spinner.xml"
     },
     {
         "merged": "E:\\MyProgram\\Android\\LookUp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",

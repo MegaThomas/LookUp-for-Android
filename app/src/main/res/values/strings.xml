@@ -4,4 +4,7 @@
     <string name="no_network">No network.</string>
     <string name="retrieve_failed">Unable to retrieve.</string>
     <string name="action_settings">Settings</string>
+    <string name="Definition">Definition</string>
+    <string name="Synonym">Synonym</string>
+    <string name="Example">Usage Example</string>
 </resources>

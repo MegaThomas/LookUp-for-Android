@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="LookUp" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="LookUp.Base" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/holo_green_light</item>
         <item name="colorPrimaryDark">@android:color/holo_green_dark</item>
         <item name="colorAccent">@color/LookUp_green</item>
         <item name="android:textColorPrimary">@android:color/holo_green_dark</item>
     </style>
-    <style name="ToolbarColoredBackArrow" parent="LookUp">
+    <style name="LookUp" parent="LookUp.Base">
+
+    </style>
+    <style name="ToolbarColor" parent="LookUp">
         <item name="android:textColorSecondary">@android:color/holo_green_dark</item>
+    </style>
+
+    <style name="LookUpTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/LookUpTabText</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+    <style name="LookUpTabText" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 </resources>

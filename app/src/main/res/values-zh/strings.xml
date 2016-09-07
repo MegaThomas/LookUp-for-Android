@@ -5,4 +5,7 @@
     <string name="retrieve_failed">无法找到</string>
     <string name="search">查找</string>
     <string name="action_settings">设置</string>
+    <string name="Synonym">近义词</string>
+    <string name="Example">用例</string>
+    <string name="Definition">释义</string>
 </resources>

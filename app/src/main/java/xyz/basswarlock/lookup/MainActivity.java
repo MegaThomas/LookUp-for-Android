@@ -1,60 +1,55 @@
 package xyz.basswarlock.lookup;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.os.Build;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.TextUtils;
-import android.text.method.ScrollingMovementMethod;
-import android.text.style.TypefaceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import java.io.IOException;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    TextView textView,
-             toolbarTitle;
-    ScrollView scrollView;
-    Toolbar toolbar;
+
+    private Toolbar toolbar;
+    TextView toolbarTitle;
     MenuItem searchItem;
+    TabLayout tabLayout;
+    ViewPager viewPager;
     AutoCompleteSearchView searchView;
-//    String theWord;
-    // dummy theme for API 23+
+    Definition def;
+    Synonym syn;
+    UsageExample exa;
+    ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        scrollView = (ScrollView) findViewById(R.id.scrollView);
-        textView = (TextView) findViewById(R.id.textView);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
-        initTextView();
         initToolbar();
+        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        initViewPager(viewPager);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+//      Doesn't work here
+//        def = (Definition) getSupportFragmentManager().findFragmentByTag(
+//                "android:switcher:" + viewPager.getId() + ":" + 0);
     }
 
     @Override
@@ -69,16 +64,25 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                searchHandler(view);
+                toolbarTitle.setText(((AppCompatTextView) view).getText());
+                try {
+                    def.searchHandler(view);
+                    syn.test();
+                    exa.searchHandler(view);
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
                 searchItem.collapseActionView();
             }
         });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                boolean isFound = searchHandler(query);
+                toolbarTitle.setText(query);
+                boolean isFound = def.searchHandler(query) && exa.searchHandler(query);
                 searchItem.collapseActionView();
                 return isFound;
+//                return true;
             }
 
             @Override
@@ -107,7 +111,9 @@ public class MainActivity extends AppCompatActivity {
                         return true;  // Return true to expand action view
                     }
                 };
-
+        def = (Definition) adapter.getItem(0);
+        exa = (UsageExample) adapter.getItem(1);
+        syn = (Synonym) adapter.getItem(2);
         MenuItemCompat.setOnActionExpandListener(searchItem, expandListener);
         return super.onCreateOptionsMenu(menu);
     }
@@ -131,87 +137,40 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    private void initTextView() {
-        textView.setMovementMethod(new ScrollingMovementMethod());
+    private void initViewPager(ViewPager viewPager) {
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new Definition(), getResources().getString(R.string.Definition));
+        adapter.addFragment(new UsageExample(), getResources().getString(R.string.Example));
+        adapter.addFragment(new Synonym(), getResources().getString(R.string.Synonym));
+        viewPager.setAdapter(adapter);
     }
 
-    public boolean searchHandler(View view) {
-        String message = (String) ((AppCompatTextView) view).getText();
-        toolbarTitle.setText(message);
-        String url = "https://vocabulary.com/dictionary/definition.ajax?search="
-                + message + "&lang=en";
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            new downloadTask().execute(url);
-            return true;
-        } else {
-            textView.setText(R.string.no_network);
-            return false;
-        }
-    }
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    public boolean searchHandler(String message) {
-        toolbarTitle.setText(message);
-        String url = "https://vocabulary.com/dictionary/definition.ajax?search="
-                + message + "&lang=en";
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            new downloadTask().execute(url);
-            return true;
-        } else {
-            textView.setText(R.string.no_network);
-            return false;
-        }
-    }
-
-    private class downloadTask extends AsyncTask<String, Void, String[]> {
-        @Override
-        protected String[] doInBackground(String... urls) {
-            try {
-                return downloadUrl(urls[0]);
-            } catch (IOException e) {
-                return new String[] {getResources().getString(R.string.retrieve_failed)};
-            }
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
 
         @Override
-        protected void onPostExecute(String[] result) {
-            Spanned spanned = new SpannableStringBuilder();
-            ArrayList<Integer> paragraph = new ArrayList<>();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                for (String str : result) {
-                    spanned = (Spanned) TextUtils.concat(spanned,
-                            Html.fromHtml(str+"<br/><br/>", Html.FROM_HTML_MODE_LEGACY));
-                    paragraph.add(spanned.length());
-                }
-            } else {
-                for (String str : result) {
-                    spanned = (Spanned) TextUtils.concat(spanned,
-                            Html.fromHtml(str+"<br/><br/>"));
-                    paragraph.add(spanned.length());
-                }
-            }
-            SpannableString text = new SpannableString(spanned);
-            text.setSpan(new TypefaceSpan(""), 0, paragraph.get(0),
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            textView.setText(text, TextView.BufferType.SPANNABLE);
-            // scroll to top
-            scrollView.fullScroll(ScrollView.FOCUS_UP);
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
         }
-    }
 
-    private String[] downloadUrl(String myurl) throws IOException {
-        Document doc = Jsoup.connect(myurl).get();
-        Element defShort = doc.select("p.short").first();
-        Element defLong = doc.select("p.long").first();
-        if (null != defShort && null != defLong) {
-            return new String[] {defShort.html(), defLong.html()};
-        } else {
-            return new String[] {"Not found."};
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
         }
     }
 }
