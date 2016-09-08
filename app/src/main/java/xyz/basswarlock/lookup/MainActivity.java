@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
         initViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-//      Doesn't work here
-//        def = (Definition) getSupportFragmentManager().findFragmentByTag(
-//                "android:switcher:" + viewPager.getId() + ":" + 0);
     }
 
     @Override
@@ -67,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 toolbarTitle.setText(((AppCompatTextView) view).getText());
                 try {
                     def.searchHandler(view);
-                    syn.test();
                     exa.searchHandler(view);
+                    syn.test();
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
@@ -82,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 boolean isFound = def.searchHandler(query) && exa.searchHandler(query);
                 searchItem.collapseActionView();
                 return isFound;
-//                return true;
             }
 
             @Override
@@ -96,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         ((EditText) searchView.findViewById(
                 android.support.v7.appcompat.R.id.search_src_text)).setHintTextColor(
                 ContextCompat.getColor(this, R.color.white));
-//        searchView.setOnQueryTextListener();
         MenuItemCompat.OnActionExpandListener expandListener =
                 new MenuItemCompat.OnActionExpandListener() {
                     @Override
@@ -107,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public boolean onMenuItemActionExpand(MenuItem item) {
-                        // Do something when expanded
                         return true;  // Return true to expand action view
                     }
                 };
@@ -122,6 +116,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
+                searchView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        MenuItemCompat.expandActionView(searchItem);
+                        searchView.setQuery(toolbarTitle.getText(), false);
+                    }
+                });
                 return true;
             case R.id.action_settings:
                 return true;
@@ -130,10 +131,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void initToolbar() {
         toolbar.showOverflowMenu();
         setSupportActionBar(toolbar);
-        // no title
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 

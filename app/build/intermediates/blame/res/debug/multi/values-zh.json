@@ -68,7 +68,14 @@
                     "endOffset": 218
                 },
                 "from": {
-                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml"
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 237,
+                        "endColumn": 46,
+                        "endOffset": 279
+                    }
                 }
             },
             {
@@ -80,7 +87,14 @@
                     "endOffset": 262
                 },
                 "from": {
-                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml"
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 43,
+                        "endOffset": 96
+                    }
                 }
             },
             {
@@ -92,7 +106,14 @@
                     "endOffset": 307
                 },
                 "from": {
-                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml"
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 102,
+                        "endColumn": 44,
+                        "endOffset": 142
+                    }
                 }
             },
             {
@@ -104,7 +125,14 @@
                     "endOffset": 356
                 },
                 "from": {
-                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml"
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 148,
+                        "endColumn": 48,
+                        "endOffset": 192
+                    }
                 }
             },
             {
@@ -116,7 +144,14 @@
                     "endOffset": 394
                 },
                 "from": {
-                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml"
+                    "file": "E:\\MyProgram\\Android\\LookUp\\app\\src\\main\\res\\values-zh\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 198,
+                        "endColumn": 37,
+                        "endOffset": 231
+                    }
                 }
             }
         ]

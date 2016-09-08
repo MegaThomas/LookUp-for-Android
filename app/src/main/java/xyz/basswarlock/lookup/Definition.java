@@ -33,9 +33,6 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import xyz.basswarlock.lookup.R;
-
-
 public class Definition extends Fragment {
 
     TextView textView;

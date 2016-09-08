@@ -38,10 +38,10 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabMode="scrollable"
+            app:tabMode="fixed"
             app:tabGravity="fill"
             app:tabTextColor="@color/colorAccent"
-            app:tabIndicatorHeight="0dp"
+            app:tabIndicatorHeight="2dp"
             style="@style/LookUpTabLayout"/>
 
     </android.support.design.widget.AppBarLayout>
