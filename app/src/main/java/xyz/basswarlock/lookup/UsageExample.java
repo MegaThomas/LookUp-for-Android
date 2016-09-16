@@ -8,11 +8,21 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.text.style.TypefaceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,13 +30,19 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user on 2016.8.16.
  */
 public class UsageExample extends Fragment {
 
-    ListView listView;
+    private RecyclerView recyclerView;
+    private UsageExampleAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private String query;
 
     public UsageExample() {
         // Required empty public constructor
@@ -47,11 +63,15 @@ public class UsageExample extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        listView = (ListView) getView().findViewById(R.id.example_listView);
+        recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this.getContext());
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     public boolean searchHandler(View view) {
         String message = (String) ((AppCompatTextView) view).getText();
+        query = message;
         String url = "https://corpus.vocabulary.com/api/1.0/examples.json?query=" + message +
                 "&maxResults=24&startOffset=0&filter=0&_=" + System.currentTimeMillis();
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -67,6 +87,7 @@ public class UsageExample extends Fragment {
     }
 
     public boolean searchHandler(String message) {
+        query = message;
         String url = "https://corpus.vocabulary.com/api/1.0/examples.json?query=" + message +
                 "&maxResults=24&startOffset=0&filter=0&_=" + System.currentTimeMillis();
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -96,15 +117,28 @@ public class UsageExample extends Fragment {
             try {
                 JSONArray sentences =  result.getJSONObject("result").getJSONArray("sentences");
                 JSONObject sentence;
-                String[] listText = new String[sentences.length()];
+                List<UsageExampleItem> examples = new ArrayList<>();
                 for (int i = 0; i < sentences.length(); i++) {
                     sentence = sentences.getJSONObject(i);
-                    listText[i] = sentence.get("sentence").toString();
+                    // https://cdn.vocab.com/js/vcom/package-1lzk5qf.js:209
+                    if (sentence.getJSONObject("volume").has("locator"))
+                        examples.add(new UsageExampleItem(
+                            sentence.get("sentence").toString(),
+                            sentence.getJSONObject("volume").getJSONObject("corpus").get("name").toString(),
+                            sentence.getJSONObject("volume").has("datePublished") ?
+                                sentence.getJSONObject("volume").get("datePublished").toString() :
+                                sentence.getJSONObject("volume").has("dateAdded") ?
+                                        sentence.getJSONObject("volume").get("dateAdded").toString() :
+                                            "",
+                            sentence.getJSONObject("volume").get("locator").toString()));
+                    else
+                        examples.add(new UsageExampleItem(
+                                sentence.get("sentence").toString(),
+                                sentence.getJSONObject("volume").getJSONObject("corpus").get("name").toString(),
+                                sentence.getJSONObject("volume").get("datePublished").toString()));
                 }
-                ArrayAdapter adapter =
-                        new ArrayAdapter(getActivity(),
-                                android.R.layout.simple_expandable_list_item_1, listText);
-                listView.setAdapter(adapter);
+                adapter = new UsageExampleAdapter(examples);
+                recyclerView.setAdapter(adapter);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -153,28 +187,112 @@ public class UsageExample extends Fragment {
 //        }
 //    }
 
-//    class UsageExample {
-//        private String mSentence,
-//                       mCorpus,
-//                       mDate,
-//                       mLink;
-//
-//        public void setmSentence(String s) {
-//            mSentence = s;
-//        }
-//
-//        public void setmCorpus(String s) {
-//            mCorpus = s;
-//        }
-//
-//        public void setmDate(String s) {
-//            mDate = s;
-//        }
-//
-//        public void setmLink(String s) {
-//            mLink = s;
-//        }
-//    }
+
+    class UsageExampleItem {
+        private String mSentence,
+                       mCorpus,
+                       mDate,
+                       mLink;
+
+        public UsageExampleItem(String sentence, String corpus, String date, String link) {
+            mSentence = sentence;
+            mCorpus = corpus;
+            mDate = date;
+            mLink = link;
+        }
+
+        public UsageExampleItem(String sentence, String corpus, String date) {
+            mSentence = sentence;
+            mCorpus = corpus;
+            mDate = date;
+            mLink = "";
+        }
+
+        public void setmSentence(String s) {
+            mSentence = s;
+        }
+
+        public void setmCorpus(String s) {
+            mCorpus = s;
+        }
+
+        public void setmDate(String s) {
+            mDate = s;
+        }
+
+        public void setmLink(String s) {
+            mLink = s;
+        }
+
+        public String getmSentence() {
+            return mSentence;
+        }
+
+        public String getmCorpus() {
+            return mCorpus;
+        }
+
+        public String getmDate() {
+            return mDate;
+        }
+
+        public String getmLink() {
+            return mLink;
+        }
+    }
+
+    class UsageExampleAdapter extends RecyclerView.Adapter<UsageExampleAdapter.MyViewHolder> {
+
+        class MyViewHolder extends RecyclerView.ViewHolder {
+            TextView sentence,
+                    source;
+            CardView cardView;
+
+            MyViewHolder(View itemView) {
+                super(itemView);
+                cardView = (CardView) itemView.findViewById(R.id.card_view);
+                sentence = (TextView) itemView.findViewById(R.id.sentence);
+                source   = (TextView) itemView.findViewById(R.id.source);
+            }
+        }
+
+        List<UsageExampleItem> examples;
+
+        public UsageExampleAdapter(List<UsageExampleItem> examples) {
+            this.examples = examples;
+        }
+
+        @Override
+        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.list_item, parent, false);
+            MyViewHolder myViewHolder = new MyViewHolder(v);
+            return myViewHolder;
+        }
+
+        @Override
+        public void onBindViewHolder(MyViewHolder myViewHolder, int position) {
+            String sentence = examples.get(position).getmSentence();
+            Spanned spanned = new SpannableStringBuilder();
+            spanned = (Spanned) TextUtils.concat(spanned,
+                    Html.fromHtml(sentence.replaceAll(query, "<strong>"+query+"</strong>")));
+            SpannableString text = new SpannableString(spanned);
+            myViewHolder.sentence.setText(text);
+
+            String date = examples.get(position).getmDate().substring(0,10);
+            date = date.replace('-', '.');
+            spanned = new SpannableStringBuilder();
+            spanned = (Spanned) TextUtils.concat(spanned,
+                    Html.fromHtml("<i>" + examples.get(position).getmCorpus() + "</i>   "), date);
+            text = new SpannableString(spanned);
+            myViewHolder.source.setText(text, TextView.BufferType.SPANNABLE);
+        }
+
+        @Override
+        public int getItemCount() {
+            return examples.size();
+        }
+    }
 }
 
 
