@@ -42,6 +42,7 @@
             app:tabGravity="fill"
             app:tabTextColor="@color/colorAccent"
             app:tabIndicatorHeight="2dp"
+            app:tabIndicatorColor="@color/white"
             style="@style/LookUpTabLayout"/>
 
     </android.support.design.widget.AppBarLayout>

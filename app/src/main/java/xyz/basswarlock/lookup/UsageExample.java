@@ -130,12 +130,14 @@ public class UsageExample extends Fragment {
                                 sentence.getJSONObject("volume").has("dateAdded") ?
                                         sentence.getJSONObject("volume").get("dateAdded").toString() :
                                             "",
+                            (JSONArray) sentence.get("offsets"),
                             sentence.getJSONObject("volume").get("locator").toString()));
                     else
                         examples.add(new UsageExampleItem(
                                 sentence.get("sentence").toString(),
                                 sentence.getJSONObject("volume").getJSONObject("corpus").get("name").toString(),
-                                sentence.getJSONObject("volume").get("datePublished").toString()));
+                                sentence.getJSONObject("volume").get("datePublished").toString(),
+                                (JSONArray) sentence.get("offsets")));
                 }
                 adapter = new UsageExampleAdapter(examples);
                 recyclerView.setAdapter(adapter);
@@ -193,18 +195,27 @@ public class UsageExample extends Fragment {
                        mCorpus,
                        mDate,
                        mLink;
+        private int[] mOffsets;
 
-        public UsageExampleItem(String sentence, String corpus, String date, String link) {
+        public UsageExampleItem(String sentence, String corpus, String date, JSONArray offsets, String link) throws JSONException {
             mSentence = sentence;
             mCorpus = corpus;
             mDate = date;
+            mOffsets = new int[offsets.length()];
+            for (int i = 0; i < offsets.length(); i++) {
+                mOffsets[i] = offsets.getInt(i);
+            }
             mLink = link;
         }
 
-        public UsageExampleItem(String sentence, String corpus, String date) {
+        public UsageExampleItem(String sentence, String corpus, String date, JSONArray offsets) throws JSONException {
             mSentence = sentence;
             mCorpus = corpus;
             mDate = date;
+            mOffsets = new int[offsets.length()];
+            for (int i = 0; i < offsets.length(); i++) {
+                mOffsets[i] = offsets.getInt(i);
+            }
             mLink = "";
         }
 
@@ -234,6 +245,10 @@ public class UsageExample extends Fragment {
 
         public String getmDate() {
             return mDate;
+        }
+
+        public int[] getmOffsets() {
+            return mOffsets;
         }
 
         public String getmLink() {
@@ -273,9 +288,14 @@ public class UsageExample extends Fragment {
         @Override
         public void onBindViewHolder(MyViewHolder myViewHolder, int position) {
             String sentence = examples.get(position).getmSentence();
+            int[] offsets = examples.get(position).getmOffsets();
             Spanned spanned = new SpannableStringBuilder();
-            spanned = (Spanned) TextUtils.concat(spanned,
-                    Html.fromHtml(sentence.replaceAll(query, "<strong>"+query+"</strong>")));
+            for (int i = 0; i < offsets.length>>1; i++) {
+                spanned = (Spanned) TextUtils.concat(spanned,
+                        Html.fromHtml(sentence.substring(0, offsets[i]) + "<strong>"
+                                + sentence.substring(offsets[i], offsets[i+1]) + "</strong>"
+                                + sentence.substring(offsets[i+1])));
+            }
             SpannableString text = new SpannableString(spanned);
             myViewHolder.sentence.setText(text);
 
